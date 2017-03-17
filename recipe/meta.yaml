@@ -16,17 +16,17 @@ source:
 
 build:
   skip: True  # [win or osx]
-  number: 0
+  number: 1
 
 requirements:
   build:
     - toolchain
-    - gmp
-    - libxml2
+    - gmp >=5.0.1,<7
+    - libxml2 2.9.*
     - pkg-config
   run:
-    - gmp 
-    - libxml2
+    - gmp >=5.0.1,<7 
+    - libxml2 2.9.*
 
 test:
   files:
