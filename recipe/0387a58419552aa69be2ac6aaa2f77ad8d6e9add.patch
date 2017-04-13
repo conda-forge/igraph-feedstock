@@ -1,0 +1,13 @@
+diff --git a/src/bignum.h b/src/bignum.h.1
+index 7361388..3e838fc 100644
+--- a/src/bignum.h
++++ b/src/bignum.h.1
+@@ -49,7 +49,7 @@
+ #endif
+
+ /* up to 512 limbs (512 * 32 = 16384 bits) numbers */
+-#define	BN_MAXSIZE 512
++#define	BN_MAXSIZE 128
+ #define	LIMBBITS 32
+ #define	LIMBMASK 0xfffffffful
+ #define	HALFMASK 0x0000fffful
