@@ -10,5 +10,5 @@ export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib $LDFLAGS"
 
 ./configure --prefix=${PREFIX}
 make -j $CPU_COUNT
-make check
+make check || (cat tests/testsuite.log && exit 1)
 make install
