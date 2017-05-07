@@ -1,0 +1,36 @@
+From ca8355ae35e05570ee56ac354a4146c0c8f7a8ec Mon Sep 17 00:00:00 2001
+From: Tamas Nepusz <ntamas@gmail.com>
+Date: Fri, 4 Sep 2015 15:32:15 +0200
+Subject: [PATCH] fixed two clang warnings in test cases; closes #857
+
+---
+ examples/simple/igraph_sparsemat4.c | 2 +-
+ examples/simple/spmatrix.c          | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/examples/simple/igraph_sparsemat4.c b/examples/simple/igraph_sparsemat4.c
+index 4d85bde..cc1c983 100644
+--- a/examples/simple/igraph_sparsemat4.c
++++ b/examples/simple/igraph_sparsemat4.c
+@@ -47,7 +47,7 @@ igraph_bool_t check_solution(const igraph_sparsemat_t *A,
+   igraph_vector_minmax(&res, &min, &max);
+   igraph_vector_destroy(&res);
+ 
+-  return abs(min) < 1e-15 && abs(max) < 1e-15;
++  return fabs(min) < 1e-15 && fabs(max) < 1e-15;
+ }
+ 
+ int main() {
+diff --git a/examples/simple/spmatrix.c b/examples/simple/spmatrix.c
+index 1139fff..18023f0 100644
+--- a/examples/simple/spmatrix.c
++++ b/examples/simple/spmatrix.c
+@@ -192,7 +192,7 @@ int main() {
+   igraph_spmatrix_init(&m, 5, 5);
+   for (i=0; i<igraph_spmatrix_nrow(&m); i++) {
+     for (j=0; j<igraph_spmatrix_ncol(&m); j++) {
+-      if (abs(i-j) == 1)
++      if (labs(i-j) == 1)
+         igraph_spmatrix_set(&m, i, j, (i+1)*(j+1));
+     }
+   }

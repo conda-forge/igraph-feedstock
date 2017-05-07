@@ -5,8 +5,8 @@ set -x -e
 export LIBIGRAPH_FALLBACK_INCLUDE_DIRS="${PREFIX}/include"
 export LIBIGRAPH_FALLBACK_LIBRARY_DIRS="${PREFIX}/lib"
 
-export CFLAGS="-I$PREFIX/include -Wno-absolute-value $CFLAGS"
-export CXXFLAGS="-I$PREFIX/include -Wno-absolute-value $CXXFLAGS"
+export CFLAGS="-I$PREFIX/include $CFLAGS"
+export CXXFLAGS="-I$PREFIX/include $CXXFLAGS"
 export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib $LDFLAGS"
 
 ./configure --prefix=${PREFIX}

@@ -14,6 +14,7 @@ source:
   patches:
     - b215195214abb8355121a8430c86df04e1f00eae.patch  # fixes igraph/igraph#906
     - 0387a58419552aa69be2ac6aaa2f77ad8d6e9add.patch  # [osx]
+    - ca8355ae35e05570ee56ac354a4146c0c8f7a8ec.patch  # fixes igraph/igraph#857
 
 build:
   skip: True  # [win]
