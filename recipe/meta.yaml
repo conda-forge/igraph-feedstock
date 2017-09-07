@@ -18,7 +18,7 @@ source:
 
 build:
   skip: True  # [win]
-  number: 3
+  number: 4
 
 requirements:
   build:
@@ -36,6 +36,8 @@ test:
   requires:
     - pkg-config
     - toolchain
+  commands:
+    - pkg-config --exists igraph
 
 about:
   home: http://igraph.org

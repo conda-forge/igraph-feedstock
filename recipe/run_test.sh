@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 system=$(uname -s)
 
 case $system in
