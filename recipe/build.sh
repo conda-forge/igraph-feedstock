@@ -13,3 +13,4 @@ export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib $LDFLAGS"
 make -j $CPU_COUNT
 make check || (cat tests/testsuite.log && exit 1)
 make install
+mv igraph.pc ${PREFIX}/lib/pkgconfig
