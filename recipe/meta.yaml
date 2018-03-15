@@ -22,6 +22,7 @@ source:
     - ca8355ae35e05570ee56ac354a4146c0c8f7a8ec.patch  # [not win]
 
 build:
+  skip: True  # [py27]
   number: 4
   features:
     - vc9   # [win and py27]
