@@ -40,6 +40,8 @@ requirements:
     - toolchain
     - libxml2 2.9.*
 
+    - python  # [win]
+
     - m2-autoconf  # [win]
     - m2-automake1.15 # [win]
     - m2-automake-wrapper # [win]
