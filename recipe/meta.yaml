@@ -40,6 +40,7 @@ requirements:
 
     - m2-autoconf  # [win]
     - m2-automake1.15 # [win]
+    - m2-automake-wrapper # [win]
     - m2-bison  # [win]
     - m2-flex  # [win]
     - m2w64-gcc  # [win]
