@@ -13,6 +13,8 @@ source:
   patches:
     # Get version from environment variable
     - 00-tools-getversion.patch
+    # Conver to py3 syntax
+    - 01-tools-create-msvc-projectfile.py  # [not py27]
     # fixes igraph/igraph#906
     - b215195214abb8355121a8430c86df04e1f00eae.patch  # [not win]
     - 0387a58419552aa69be2ac6aaa2f77ad8d6e9add.patch  # [osx]
