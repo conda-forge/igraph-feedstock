@@ -27,17 +27,23 @@ build:
 
 requirements:
   build:
-    - automake
-    - autoconf
-    - bison
-    - flex
+    - autoconf  # [not win]
+    - automake  # [not win]
+    - bison  # [not win]
+    - flex  # [not win]
     - gmp >=5.0.1,<7  # [not win]
-    - libtool
+    - libtool  # [not win]
     - pkg-config  # [not win]
 
     - toolchain
     - libxml2 2.9.*
 
+    - m2-autoconf  # [win]
+    - m2-automake1.15 # [win]
+    - m2-bison  # [win]
+    - m2-flex  # [win]
+    - m2w64-gcc  # [win]
+    - m2-libtool  #[win]
     - posix # [win]
     - vc 9  # [win and py27]
     - vc 14  # [win and (py35 or py36)]
