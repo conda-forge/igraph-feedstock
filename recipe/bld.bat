@@ -1,8 +1,11 @@
 @echo on
 
-bootstrap.sh
-configure
+bash ./bootstrap.sh
+bash ./configure
 make msvc
 
-rem vcbuild /upgrade igraph.vcproj
-rem vcbuild igraph.vcproj "release|x64"
+cd igraph-%PKG_VERSION%-msvc
+copy %LIBRARY_PREFIX%\include\stdint.h winclude
+
+vcbuild /upgrade igraph.vcproj
+vcbuild igraph.vcproj "release|win32"
