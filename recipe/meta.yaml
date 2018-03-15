@@ -17,8 +17,10 @@ source:
     - ca8355ae35e05570ee56ac354a4146c0c8f7a8ec.patch  # fixes igraph/igraph#857
 
 build:
-  skip: True  # [win]
   number: 4
+  features:
+    - vc9   # [win and py27]
+    - vc14  # [win and (py35 or py36)]
 
 requirements:
   build:
@@ -26,9 +28,13 @@ requirements:
     - gmp >=5.0.1,<7
     - libxml2 2.9.*
     - pkg-config
+    - vc 9  # [win and py27]
+    - vc 14  # [win and (py35 or py36)]
   run:
     - gmp >=5.0.1,<7
     - libxml2 2.9.*
+    - vc 9  # [win and py27]
+    - vc 14  # [win and (py35 or py36)]
 
 test:
   files:
