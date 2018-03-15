@@ -1,7 +1,6 @@
 {%set name = "igraph" %}
 {%set version = "0.7.1" %}
-{%set hash_type = "sha256" %}
-{%set hash_val = "d978030e27369bf698f3816ab70aa9141e9baf81c56cc4f55efbe5489b46b0df" %}
+{%set sha256 = "806a3e667913c711f41a3b8e88642e81d1529ac8285f1c65126add7f1254a864" %}
 
 package:
   name: {{ name }}
@@ -9,12 +8,14 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: http://igraph.org/nightly/get/c/{{ name }}-{{ version }}.tar.gz
-  {{ hash_type }}: {{ hash_val }}
+  url: https://github.com/igraph/{{ name }}/archive/{{ version }}.tar.gz
+  sha256: {{ sha256 }}
   patches:
-    - b215195214abb8355121a8430c86df04e1f00eae.patch  # fixes igraph/igraph#906
+    # fixes igraph/igraph#906
+    - b215195214abb8355121a8430c86df04e1f00eae.patch  # [not win]
     - 0387a58419552aa69be2ac6aaa2f77ad8d6e9add.patch  # [osx]
-    - ca8355ae35e05570ee56ac354a4146c0c8f7a8ec.patch  # fixes igraph/igraph#857
+    # fixes igraph/igraph#857
+    - ca8355ae35e05570ee56ac354a4146c0c8f7a8ec.patch  # [not win]
 
 build:
   number: 4
@@ -24,15 +25,23 @@ build:
 
 requirements:
   build:
+    - gmp >=5.0.1,<7  # [not win]
+    - pkg-config  # [not win]
+    - automake
+    - autoconf
+    - flex
+    - bison
+
     - toolchain
-    - gmp >=5.0.1,<7
     - libxml2 2.9.*
-    - pkg-config
+
+    - posix # [win]
     - vc 9  # [win and py27]
     - vc 14  # [win and (py35 or py36)]
   run:
-    - gmp >=5.0.1,<7
+    - gmp >=5.0.1,<7  # [not win]
     - libxml2 2.9.*
+
     - vc 9  # [win and py27]
     - vc 14  # [win and (py35 or py36)]
 
@@ -40,10 +49,10 @@ test:
   files:
     - igraph_test.c
   requires:
-    - pkg-config
-    - toolchain
+    - pkg-config  # [not win]
+    - toolchain   # [not win]
   commands:
-    - pkg-config --exists igraph
+    - pkg-config --exists igraph  # [not win]
 
 about:
   home: http://igraph.org

@@ -1,5 +1,8 @@
 @echo on
-cd msvc
 
-vcbuild /upgrade
-vcbuild igraph.vcproj "release|x64"
+bootstrap.sh
+configure
+make msvc
+
+rem vcbuild /upgrade igraph.vcproj
+rem vcbuild igraph.vcproj "release|x64"
