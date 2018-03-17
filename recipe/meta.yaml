@@ -31,6 +31,7 @@ source:
     - ca8355ae35e05570ee56ac354a4146c0c8f7a8ec.patch  # [not win]
 
 build:
+  skip: True  # [win and py27]
   number: 4
   skip: true  # [win and py27]
   features:
@@ -49,6 +50,8 @@ requirements:
 
     - toolchain
     - libxml2 2.9.*
+
+    - python  # [win]
 
     - m2-autoconf  # [win]
     - m2-automake1.15 # [win]
