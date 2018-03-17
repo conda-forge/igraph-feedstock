@@ -1,0 +1,22 @@
+diff --git a/igraph-0.7.1-msvc/igraph.vcproj b/igraph-0.7.1-msvc/igraph.vcproj
+index 4c262b8..bc9352f 100644
+--- a/igraph-0.7.1-msvc/igraph.vcproj
+--- b/igraph-0.7.1-msvc/igraph.vcproj
+@@ -23,7 +23,7 @@
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+ 				AdditionalIncludeDirectories="$(ProjectDir)src;$(ProjectDir)winclude;$(ProjectDir)include"
+-				PreprocessorDefinitions="Win32;WIN32;_WINDOWS;_USRDLL;NCOMPLEX;IGRAPH_EXPORTS;USE_CLOCK"
++				PreprocessorDefinitions="Win32;WIN32;_WINDOWS;_USRDLL;NCOMPLEX;IGRAPH_EXPORTS;USE_CLOCK;PRPACK_IGRAPH_SUPPORT"
+ 				RuntimeLibrary="2"
+ 				UsePrecompiledHeader="0"
+ 				WarningLevel="3"
+@@ -62,7 +62,7 @@
+ 			<Tool
+ 				Name="VCCLCompilerTool"
+ 				AdditionalIncludeDirectories="$(ProjectDir)src;$(ProjectDir)winclude;$(ProjectDir)include"
+-				PreprocessorDefinitions="Win64;WIN64;_WINDOWS;_USRDLL;NCOMPLEX;IGRAPH_EXPORTS;USE_CLOCK"
++				PreprocessorDefinitions="Win64;WIN64;_WINDOWS;_USRDLL;NCOMPLEX;IGRAPH_EXPORTS;USE_CLOCK;PRPACK_IGRAPH_SUPPORT"
+ 				RuntimeLibrary="2"
+ 				UsePrecompiledHeader="0"
+ 				WarningLevel="3"

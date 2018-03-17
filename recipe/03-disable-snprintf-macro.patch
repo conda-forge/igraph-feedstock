@@ -1,0 +1,14 @@
+diff --git a/igraph-0.7.1-msvc/winclude/config.h b/igraph-0.7.1-msvc/winclude/config.h
+index 742baee..b4f07f4 100644
+--- a/igraph-0.7.1-msvc/winclude/config.h
++++ b/igraph-0.7.1-msvc/winclude/config.h
+@@ -170,7 +170,9 @@
+ #define hypot _hypot
+ #include <float.h>
+ 
++#if _MSC_VER<1900
+ #define snprintf igraph_i_snprintf
++#endif
+ 
+ /* To turn off some warnings about fscanf, strcpy etc */
+ #define _CRT_SECURE_NO_WARNINGS 1

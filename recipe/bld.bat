@@ -1,13 +1,26 @@
-@echo on
+:: Configure
+set CONF=Release
+if "%ARCH%" == "64" (
+  set ARCH=x64
+) else (
+  set ARCH=Win32
+)
 
-bash ./bootstrap.sh
-bash ./configure
-make msvc
+call "%VCINSTALLDIR%\bin\vcvars32.bat"
 
 cd igraph-%PKG_VERSION%-msvc
-copy %LIBRARY_PREFIX%\include\stdint.h winclude
+rem copy %LIBRARY_PREFIX%\include\stdint.h winclude
 
-vcbuild /upgrade igraph.vcproj
+call devenv igraph.sln /Upgrade
 
-rem How to pass /DPRPACK_IGRAPH_SUPPORT=1 to build command
-vcbuild igraph.vcproj "release|win32"
+:: Build
+call msbuild igraph.sln ^
+  /t:Build /v:minimal ^
+  /p:Configuration=%CONF% ^
+  /p:Platform=%ARCH%
+
+if errorlevel 1 exit 1
+
+:: Install
+copy Release\libigraph.lib %LIBRARY_BIN% || exit 1
+copy include %LIBRARY_INCLUDE%\igraph || exit 1

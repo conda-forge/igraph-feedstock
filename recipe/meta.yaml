@@ -1,20 +1,29 @@
 {%set name = "igraph" %}
 {%set version = "0.7.1" %}
 {%set sha256 = "806a3e667913c711f41a3b8e88642e81d1529ac8285f1c65126add7f1254a864" %}
+{%set sha256win = "x" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/igraph/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  fn: {{ name }}-{{ version }}.tar.gz  # [not win]
+  url: https://github.com/igraph/{{ name }}/archive/{{ version }}.tar.gz  # [not win]
+  sha256: {{ sha256 }}  # [not win]
+
+  fn: {{ name }}-{{ version }}.zip  # [win]
+  url: https://github.com/igraph/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}-msvc.zip  # [win]
+  sha256: {{ sha256win }}  # [not win]
+
   patches:
     # Get version from environment variable
-    - 00-tools-getversion.patch
-    # Conver to py3 syntax
-    - 01-tools-create-msvc-projectfile.py  # [not py27]
+    - 00-tools-getversion.patch  # [not win]
+    # Enable PRPACK_IGRAPH_SUPPORT (c.f. stackoverflow/25260025)
+    - 02-enable-prpack-igraph-support.patch  # [win]
+    # VC14 ship with snprintf
+    - 03-disable-snprintf-macro.patch  # [win]
+
     # fixes igraph/igraph#906
     - b215195214abb8355121a8430c86df04e1f00eae.patch  # [not win]
     - 0387a58419552aa69be2ac6aaa2f77ad8d6e9add.patch  # [osx]
@@ -23,6 +32,7 @@ source:
 
 build:
   number: 4
+  skip: true  # [win and py27]
   features:
     - vc9   # [win and py27]
     - vc14  # [win and (py35 or py36)]
