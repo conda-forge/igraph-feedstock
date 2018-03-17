@@ -33,7 +33,6 @@ source:
 build:
   skip: True  # [win and py27]
   number: 4
-  skip: true  # [win and py27]
   features:
     - vc9   # [win and py27]
     - vc14  # [win and (py35 or py36)]

@@ -3,7 +3,7 @@ set CONF=Release
 if "%ARCH%" == "64" (
   set ARCH=x64
 ) else (
-  set ARCH=Win32
+  set ARCH=x86
 )
 
 call "%VCINSTALLDIR%\bin\vcvars32.bat"
@@ -22,5 +22,5 @@ call msbuild igraph.sln ^
 if errorlevel 1 exit 1
 
 :: Install
-copy Release\libigraph.lib %LIBRARY_BIN% || exit 1
+copy Release\igraph.lib %LIBRARY_BIN% || exit 1
 copy include %LIBRARY_INCLUDE%\igraph || exit 1
