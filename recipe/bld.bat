@@ -1,12 +1,7 @@
 :: Configure
-set CONF=Release
-if "%ARCH%" == "64" (
-  set ARCH=x64
-) else (
-  set ARCH=x86
-)
-
 call "%VCINSTALLDIR%\bin\vcvars32.bat"
+
+set CONF=Release
 
 cd igraph-%PKG_VERSION%-msvc
 rem copy %LIBRARY_PREFIX%\include\stdint.h winclude
@@ -17,10 +12,10 @@ call devenv igraph.sln /Upgrade
 call msbuild igraph.sln ^
   /t:Build /v:minimal ^
   /p:Configuration=%CONF% ^
-  /p:Platform=%ARCH%
+  /p:Platform=x%ARCH%
 
 if errorlevel 1 exit 1
 
 :: Install
-copy Release\igraph.lib %LIBRARY_BIN% || exit 1
-copy include %LIBRARY_INCLUDE%\igraph || exit 1
+copy Release\igraph.lib %LIBRARY_LIB% || exit 1
+xcopy /S /I include %LIBRARY_INC%\igraph || exit 1
