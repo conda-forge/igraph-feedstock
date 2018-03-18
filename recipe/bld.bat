@@ -17,7 +17,7 @@ call devenv igraph.sln /Upgrade
 call msbuild igraph.sln ^
   /t:Build /v:minimal ^
   /p:Configuration=%CONF% ^
-  /p:Platform=x%ARCH%
+  /p:Platform=%ARCH%
 
 if errorlevel 1 exit 1
 
