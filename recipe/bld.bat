@@ -2,6 +2,11 @@
 call "%VCINSTALLDIR%\bin\vcvars32.bat"
 
 set CONF=Release
+if "%ARCH%" == "64" (
+  set ARCH=x64
+) else (
+  set ARCH=x86
+)
 
 cd igraph-%PKG_VERSION%-msvc
 rem copy %LIBRARY_PREFIX%\include\stdint.h winclude
