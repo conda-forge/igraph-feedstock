@@ -52,15 +52,7 @@ requirements:
 
     - python  # [win]
 
-    - m2-autoconf  # [win]
-    - m2-automake1.15 # [win]
-    - m2-automake-wrapper # [win]
-    - m2-bison  # [win]
-    - m2-flex  # [win]
-    - m2w64-gcc  # [win]
-    - m2-libtool  # [win]
     - msinttypes  # [win]
-    - posix # [win]
     - vc 9  # [win and py27]
     - vc 14  # [win and (py35 or py36)]
   run:
