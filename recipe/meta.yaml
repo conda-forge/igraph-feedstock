@@ -1,7 +1,7 @@
 {%set name = "igraph" %}
 {%set version = "0.7.1" %}
 {%set sha256 = "806a3e667913c711f41a3b8e88642e81d1529ac8285f1c65126add7f1254a864" %}
-{%set sha256win = "x" %}
+{%set sha256win = "cd8986f2910332caf4cf1cfec93617800a152f8e3151ee009b82fcdc680f8e4b" %}
 
 package:
   name: {{ name }}
@@ -14,7 +14,7 @@ source:
 
   fn: {{ name }}-{{ version }}.zip  # [win]
   url: https://github.com/igraph/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}-msvc.zip  # [win]
-  sha256: {{ sha256win }}  # [not win]
+  sha256: {{ sha256win }}  # [win]
 
   patches:
     # Get version from environment variable
