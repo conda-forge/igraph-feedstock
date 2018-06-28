@@ -20,15 +20,18 @@ build:
 
 requirements:
   build:
-    - toolchain
-    - gmp >=5.0.1,<7
-    - libiconv
-    - libxml2 2.9.*
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ compiler('fortran') }}
     - pkg-config
-  run:
-    - gmp >=5.0.1,<7
+  host:
+    - gmp
     - libiconv
-    - libxml2 2.9.*
+    - libxml2
+  run:
+    - gmp
+    - libiconv
+    - libxml2
 
 test:
   files:
