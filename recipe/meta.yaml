@@ -29,13 +29,15 @@ requirements:
     - icu
     - libiconv
     - libxml2
-    - zlip
+    - xz
+    - zlib
   run:
     - gmp
     - icu
     - libiconv
     - libxml2
-    - zlip
+    - xz
+    - zlib
 
 test:
   files:
