@@ -1,0 +1,19 @@
+c_compiler:
+- toolchain_c
+cxx_compiler:
+- toolchain_cxx
+fortran_compiler:
+- toolchain_fort
+gmp:
+- '6'
+libiconv:
+- '1.15'
+libxml2:
+- '2.9'
+pin_run_as_build:
+  gmp:
+    max_pin: x
+  libiconv:
+    max_pin: x.x
+  libxml2:
+    max_pin: x.x
