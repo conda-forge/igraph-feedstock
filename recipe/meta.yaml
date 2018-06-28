@@ -1,7 +1,5 @@
 {%set name = "igraph" %}
 {%set version = "0.7.1" %}
-{%set hash_type = "sha256" %}
-{%set hash_val = "d978030e27369bf698f3816ab70aa9141e9baf81c56cc4f55efbe5489b46b0df" %}
 
 package:
   name: {{ name }}
@@ -10,7 +8,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: http://igraph.org/nightly/get/c/{{ name }}-{{ version }}.tar.gz
-  {{ hash_type }}: {{ hash_val }}
+  sha256: d978030e27369bf698f3816ab70aa9141e9baf81c56cc4f55efbe5489b46b0df
   patches:
     - b215195214abb8355121a8430c86df04e1f00eae.patch  # fixes igraph/igraph#906
     - 0387a58419552aa69be2ac6aaa2f77ad8d6e9add.patch  # [osx]
@@ -18,16 +16,18 @@ source:
 
 build:
   skip: True  # [win]
-  number: 4
+  number: 5
 
 requirements:
   build:
     - toolchain
     - gmp >=5.0.1,<7
+    - libiconv
     - libxml2 2.9.*
     - pkg-config
   run:
     - gmp >=5.0.1,<7
+    - libiconv
     - libxml2 2.9.*
 
 test:
