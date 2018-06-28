@@ -26,12 +26,16 @@ requirements:
     - pkg-config
   host:
     - gmp
+    - icu
     - libiconv
     - libxml2
+    - zlip
   run:
     - gmp
+    - icu
     - libiconv
     - libxml2
+    - zlip
 
 test:
   files:
