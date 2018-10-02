@@ -4,7 +4,7 @@ system=$(uname -s)
 
 case $system in
 	"Linux" )
-        export CC=gcc
+        export CC=${CC:-gcc}
 		${CC} igraph_test.c $(pkg-config --libs --cflags igraph) -o igraph_test
 		./igraph_test
 		;;
