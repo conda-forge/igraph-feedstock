@@ -5,9 +5,10 @@ set -x -e
 export LIBIGRAPH_FALLBACK_INCLUDE_DIRS="${PREFIX}/include"
 export LIBIGRAPH_FALLBACK_LIBRARY_DIRS="${PREFIX}/lib"
 
-export CFLAGS="-I$PREFIX/include $CFLAGS"
-export CXXFLAGS="-I$PREFIX/include $CXXFLAGS"
-export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib $LDFLAGS"
+if [ "$(uname)" == "Linux" ]
+then
+   export LDFLAGS="$LDFLAGS -Wl,-rpath-link,${PREFIX}/lib"
+fi
 
 ./configure --prefix=${PREFIX}
 make -j $CPU_COUNT
