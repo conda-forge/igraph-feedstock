@@ -16,7 +16,9 @@ source:
 
 build:
   skip: True  # [win]
-  number: 5
+  number: 1005
+  run_exports:
+    - {{ pin_subpackage("igraph", max_pin="x.x") }}
 
 requirements:
   build:
@@ -44,7 +46,9 @@ test:
     - igraph_test.c
   requires:
     - pkg-config
-    - toolchain
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ compiler('fortran') }}
   commands:
     - pkg-config --exists igraph
     - conda inspect linkages -p $PREFIX {{ name|lower }}  # [not win]
