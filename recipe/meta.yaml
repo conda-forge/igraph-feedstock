@@ -1,4 +1,7 @@
 {% set name = "igraph" %}
+# last commit before the sage bump date of igraph
+# 6faf5610b8ab0175466e93a8a1d1981987976a38
+# https://github.com/sagemath/sage/commit/721ccc33fa39015893f7b75200ec01d2256694d7#diff-fc9fa400d2f7d9020507b74470e11dd8
 {% set version = "0.7.1" %}
 
 package:
@@ -10,13 +13,11 @@ source:
   url: http://igraph.org/nightly/get/c/{{ name }}-{{ version }}.tar.gz
   sha256: d978030e27369bf698f3816ab70aa9141e9baf81c56cc4f55efbe5489b46b0df
   patches:
-    - b215195214abb8355121a8430c86df04e1f00eae.patch  # fixes igraph/igraph#906
     - 0387a58419552aa69be2ac6aaa2f77ad8d6e9add.patch  # [osx]
-    - ca8355ae35e05570ee56ac354a4146c0c8f7a8ec.patch  # fixes igraph/igraph#857
 
 build:
   skip: True  # [win]
-  number: 1005
+  number: 1006
   run_exports:
     - {{ pin_subpackage("igraph", max_pin="x.x") }}
 
