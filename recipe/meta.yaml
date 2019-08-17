@@ -16,7 +16,7 @@ source:
 
 build:
   skip: True  # [win]
-  number: 1006
+  number: 1007
   run_exports:
     - {{ pin_subpackage("igraph", max_pin="x.x") }}
 
