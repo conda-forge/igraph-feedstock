@@ -6,13 +6,17 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 72637335600cf4758fd718009b16d92489b58a2f5dd96d884740d20cd5769649
+  fn: {{ name }}-{{ version }}.tar.gz # [not win]
+  url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz # [not win]
+  sha256: 72637335600cf4758fd718009b16d92489b58a2f5dd96d884740d20cd5769649 # [not win]
+
+  fn: {{ name }}-{{ version }}.zip  # [win]
+  url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}-msvc.zip  # [win]
+  sha256: ff1cdcdf4a258b03eeec2075fd879f6d21b0e05efa66d4cc4374f39e70648d9a  # [win]
 
 build:
-  skip: True  # [win]
-  number: 0
+  skip: True  # [win and vc<14]
+  number: 1
   run_exports:
     - {{ pin_subpackage("igraph", max_pin="x.x") }}
 
@@ -21,22 +25,25 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
-    - pkg-config
-    - make
+    - pkg-config # [not win]
+    - make # [not win]
+    - python # [win]
+    - msinttypes # [win]
+
   host:
-    - gmp
-    - icu
-    - libiconv
-    - libxml2
-    - xz
-    - zlib
+    - gmp # [not win]
+    - icu # [not win]
+    - libiconv # [not win]
+    - libxml2 # [not win]
+    - xz # [not win]
+    - zlib # [not win]
   run:
-    - gmp
-    - icu
-    - libiconv
-    - libxml2
-    - xz
-    - zlib
+    - gmp # [not win]
+    - icu # [not win]
+    - libiconv # [not win]
+    - libxml2 # [not win]
+    - xz # [not win]
+    - zlib # [not win]
 
 test:
   files:
