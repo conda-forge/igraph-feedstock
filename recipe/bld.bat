@@ -11,7 +11,7 @@ if "%ARCH%" == "64" (
 cd igraph-%PKG_VERSION%-msvc
 rem copy %LIBRARY_PREFIX%\include\stdint.h winclude
 
-call devenv igraph.sln /Upgrade
+call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\devenv.exe" igraph.sln /Upgrade
 
 :: Build
 call msbuild igraph.sln ^
