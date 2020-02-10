@@ -62,7 +62,8 @@ about:
   home: http://igraph.org
   license: GPL2
   license_family: GPL
-  license_file: COPYING
+  license_file: COPYING  # [not win]
+  license_file: '{{ environ["RECIPE_DIR"] }}/COPYING'  # [win]
   summary: 'An open source and free collection of network analysis tool.'
   description: |
     igraph is a collection of network analysis tools with the emphasis on efficiency,
