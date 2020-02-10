@@ -26,7 +26,7 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
     - pkg-config  # [not win]
-    - cmake # [win]
+    - cmake  # [win]
     - make  # [not win]
     - python  # [win]
     - msinttypes  # [win]
@@ -49,12 +49,12 @@ test:
   files:
     - igraph_test.c
   requires:
-    - pkg-config # [not win]
+    - pkg-config  # [not win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
   commands:
-    - pkg-config --exists igraph # [not win]
+    - pkg-config --exists igraph  # [not win]
     - conda inspect linkages -p $PREFIX {{ name|lower }}  # [not win]
     - conda inspect objects -p $PREFIX {{ name|lower }}  # [osx]
 
