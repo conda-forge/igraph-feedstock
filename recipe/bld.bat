@@ -1,5 +1,6 @@
 :: Configure
-call "%VCINSTALLDIR%\bin\vcvars32.bat"
+set %VCINSTALLDIR%="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise"
+call "%VCINSTALLDIR%\Auxiliary\Build\vcvarsall.bat"
 
 set CONF=Release
 if "%ARCH%" == "64" (
@@ -9,13 +10,11 @@ if "%ARCH%" == "64" (
 )
 
 cd igraph-%PKG_VERSION%-msvc
-rem copy %LIBRARY_PREFIX%\include\stdint.h winclude
 
-where msbuild
-call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe" igraph.sln /Upgrade
+call devenv.exe igraph.sln /Upgrade
 
 :: Build
-call msbuild igraph.sln ^
+call msbuild.exe igraph.sln ^
   /t:Build /v:minimal ^
   /p:Configuration=%CONF% ^
   /p:Platform=%ARCH%
