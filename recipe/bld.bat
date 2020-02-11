@@ -1,6 +1,6 @@
 :: Configure
 set %VCINSTALLDIR%="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise"
-call "%VCINSTALLDIR%\Auxiliary\Build\vcvarsall.bat"
+call "%VCINSTALLDIR%\VC\Auxiliary\Build\vcvarsall.bat"
 
 set CONF=Release
 if "%ARCH%" == "64" (
