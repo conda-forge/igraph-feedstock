@@ -1,6 +1,3 @@
-:: Configure
-call "%VCINSTALLDIR%VC\Auxiliary\Build\vcvars64.bat"
-
 set CONF=Release
 if "%ARCH%" == "64" (
   set ARCH=x64
