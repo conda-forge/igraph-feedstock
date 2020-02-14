@@ -15,7 +15,7 @@ source:
   sha256: ff1cdcdf4a258b03eeec2075fd879f6d21b0e05efa66d4cc4374f39e70648d9a  # [win]
 
 build:
-  skip: True  # [win and vc<10]
+  skip: True  # [win and vc<14]
   number: 0
   run_exports:
     - {{ pin_subpackage("igraph", max_pin="x.x") }}
@@ -25,8 +25,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
-    - vs2017_{{ target_platform  }}  # [win and vc>=14]
-    - vs2015_{{ target_platform  }}  # [win and vc=10]
+    - vs2017_{{ target_platform  }}  # [win]
     - pkg-config  # [not win]
     - make  # [not win]
     - python  # [win]
