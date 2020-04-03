@@ -5,8 +5,6 @@ set -x -e
 export LIBIGRAPH_FALLBACK_INCLUDE_DIRS="${PREFIX}/include"
 export LIBIGRAPH_FALLBACK_LIBRARY_DIRS="${PREFIX}/lib"
 
-# Fix conflict with libc++ version file
-rm VERSION
 # fix the simple test runner which doesn't use ldflags
 export CC="${CC} ${CFLAGS} ${LDFLAGS}"
 
