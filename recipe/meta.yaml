@@ -60,7 +60,7 @@ test:
 
 about:
   home: http://igraph.org
-  license: GPL2
+  license: GPL-2.0
   license_family: GPL
   license_file: COPYING  # [not win]
   license_file: '{{ environ["RECIPE_DIR"] }}/COPYING'  # [win]
