@@ -1,9 +1,9 @@
 About igraph
 ============
 
-Home: http://igraph.org
+Home: http://igraph.org/c/
 
-Package license: GPL2
+Package license: GPL-2.0
 
 Feedstock license: BSD 3-Clause
 
@@ -29,7 +29,7 @@ Current build status
     <td>Drone</td>
     <td>
       <a href="https://cloud.drone.io/conda-forge/igraph-feedstock">
-        <img alt="linux" src="https://img.shields.io/drone/build/conda-forge/master.svg?label=Linux">
+        <img alt="linux" src="https://img.shields.io/drone/build/conda-forge/igraph-feedstock/master.svg?label=Linux">
       </a>
     </td>
   </tr>
