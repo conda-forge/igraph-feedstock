@@ -25,7 +25,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
-    - vs2017_{{ target_platform  }}  # [win]
+    - vs2017_{{ target_platform }}  # [win]
     - pkg-config  # [not win]
     - make  # [not win]
     - python  # [win]
@@ -60,7 +60,7 @@ test:
 
 about:
   home: http://igraph.org/c/
-  license: GPL-2.0
+  license: GPL-2.0-or-later
   license_family: GPL
   license_file:
     - COPYING  # [not win]
