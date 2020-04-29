@@ -1,5 +1,5 @@
 {% set name = "igraph" %}
-{% set version = "0.8.1" %}
+{% set version = "0.8.2" %}
 
 package:
   name: {{ name }}
@@ -8,11 +8,11 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz  # [not win]
   url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz  # [not win]
-  sha256: 266e1bf9e81305b368fbaa2218a8416c51ae85ea164e3657c574dc3898ca7b71  # [not win]
+  sha256: 718a471e7b8cbf02e3e8006153b7be6a22f85bb804283763a0016280e8a60e95  # [not win]
 
   fn: {{ name }}-{{ version }}.zip  # [win]
   url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}-msvc.zip  # [win]
-  sha256: 5fb33be032374dd9becea2145ec2187a7a371086df07fb3fc115f7480104642a  # [win]
+  sha256: 0a8adc7740e857a31ce1a5d245cf4f5557779190b3f941d171d141505b3ea464  # [win]
 
 build:
   skip: True  # [win and vc<14]
