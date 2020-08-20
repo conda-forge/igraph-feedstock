@@ -16,7 +16,7 @@ source:
 
 build:
   skip: True  # [win and vc<14]
-  number: 2
+  number: 3
   run_exports:
     - {{ pin_subpackage("igraph", max_pin="x.x") }}
 
