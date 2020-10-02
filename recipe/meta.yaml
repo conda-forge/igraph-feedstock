@@ -1,5 +1,5 @@
 {% set name = "igraph" %}
-{% set version = "0.8.2" %}
+{% set version = "0.8.3" %}
 
 package:
   name: {{ name }}
@@ -8,15 +8,15 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz  # [not win]
   url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz  # [not win]
-  sha256: 718a471e7b8cbf02e3e8006153b7be6a22f85bb804283763a0016280e8a60e95  # [not win]
+  sha256: cc935826d3725a9d95f1b0cc46e3c08c554b29cdd6943f0286d965898120b3f1  # [not win]
 
   fn: {{ name }}-{{ version }}.zip  # [win]
   url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}-msvc.zip  # [win]
-  sha256: 0a8adc7740e857a31ce1a5d245cf4f5557779190b3f941d171d141505b3ea464  # [win]
+  sha256: a6ab981c88b31bffb833a077235f1e3e46d4576a254c9a03397dcc7ebf90e942  # [win]
 
 build:
   skip: True  # [win and vc<14]
-  number: 3
+  number: 0
   run_exports:
     - {{ pin_subpackage("igraph", max_pin="x.x") }}
 
