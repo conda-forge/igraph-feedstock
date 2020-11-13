@@ -22,6 +22,7 @@ build:
 
 requirements:
   build:
+    - libtool  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
@@ -55,8 +56,6 @@ test:
     - {{ compiler('fortran') }}
   commands:
     - pkg-config --exists igraph  # [not win]
-    - conda inspect linkages -p $PREFIX {{ name|lower }}  # [not win]
-    - conda inspect objects -p $PREFIX {{ name|lower }}  # [osx]
 
 about:
   home: http://igraph.org/c/
