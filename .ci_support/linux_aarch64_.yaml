@@ -1,5 +1,7 @@
 BUILD:
 - aarch64-conda_cos7-linux-gnu
+arpack:
+- '3.7'
 c_compiler:
 - gcc
 c_compiler_version:
@@ -22,6 +24,8 @@ fortran_compiler:
 - gfortran
 fortran_compiler_version:
 - '9'
+glpk:
+- '4.65'
 gmp:
 - '6'
 icu:
@@ -30,7 +34,13 @@ libiconv:
 - '1.16'
 libxml2:
 - '2.9'
+openblas:
+- 0.3.*
 pin_run_as_build:
+  arpack:
+    max_pin: x.x.x
+  glpk:
+    max_pin: x.x
   gmp:
     max_pin: x
   libiconv:
@@ -41,6 +51,8 @@ pin_run_as_build:
     max_pin: x.x
   zlib:
     max_pin: x.x
+suitesparse:
+- '5.6'
 target_platform:
 - linux-aarch64
 xz:
