@@ -58,6 +58,7 @@ test:
     - vs2017_{{ target_platform }}  # [win]
   commands:
     - pkg-config --exists igraph  # [not win]
+    - pkg-config --libs --cflags igraph  # [not win]
 
 about:
   home: http://igraph.org/c/

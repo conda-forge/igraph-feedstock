@@ -15,6 +15,7 @@ cmake -GNinja ^
 
 cmake --build . --config Release --target igraph
 cmake --build . --config Release --target check
+if errorlevel 1 exit 1
 cmake --build . --config Release --target install
 
 if errorlevel 1 exit 1
