@@ -24,41 +24,43 @@ requirements:
     - {{ compiler('fortran') }}
     - vs2017_{{ target_platform }}  # [win]
     - cmake
-    - pkg-config  # [not win]
-    - glpk  # [not win]
-    - openblas  # [not win]
-    - suitesparse
-    - libxml2
-    - gmp  # [not win]
-    - arpack  # [not win]
+    - ninja
     - make  # [not win]
     - python  # [win]
     - msinttypes  # [win]
-  host:
+    - pkg-config  # [not win]
+    - glpk
+    - openblas
+    - suitesparse
+    - libxml2
+    - arpack
     - gmp  # [not win]
+  host:
     - icu  # [not win]
     - libiconv  # [not win]
-    - libxml2
     - xz  # [not win]
     - zlib  # [not win]
   run:
+    - glpk
+    - openblas
+    - suitesparse
+    - libxml2
+    - arpack
     - gmp  # [not win]
     - icu  # [not win]
     - libiconv  # [not win]
-    - libxml2
     - xz  # [not win]
     - zlib  # [not win]
 
 test:
-  files:
-    - igraph_test.c
   requires:
     - pkg-config  # [not win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
+    - vs2017_{{ target_platform }}  # [win]
   commands:
-    - pkg-config --exists igraph  # [not win]
+    - cmake --build . --target check
 
 about:
   home: http://igraph.org/c/
