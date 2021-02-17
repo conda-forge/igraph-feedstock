@@ -27,7 +27,6 @@ requirements:
     - ninja
     - make  # [not win]
     - python  # [win]
-    - msinttypes  # [win]
     - pkg-config  # [not win]
     - glpk
     - openblas
@@ -47,10 +46,6 @@ requirements:
     - libxml2
     - arpack
     - gmp  # [not win]
-    - icu  # [not win]
-    - libiconv  # [not win]
-    - xz  # [not win]
-    - zlib  # [not win]
 
 test:
   requires:
@@ -59,8 +54,9 @@ test:
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
     - vs2017_{{ target_platform }}  # [win]
+    - cmake
   commands:
-    - cmake --build . --target check
+    - cd build && cmake --build . --target check
 
 about:
   home: http://igraph.org/c/
