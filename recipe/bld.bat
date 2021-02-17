@@ -1,22 +1,18 @@
-set CONF=Release
-if "%ARCH%" == "64" (
-  set ARCH=x64
-) else (
-  set ARCH=x86
-)
+@echo on
 
-cd igraph-%PKG_VERSION%-msvc
-
-call devenv.exe igraph.sln /Upgrade
-
-:: Build
-call msbuild.exe igraph.sln ^
-  /t:Build /v:minimal ^
-  /p:Configuration=%CONF% ^
-  /p:Platform=%ARCH%
-
+mkdir build-cpp
 if errorlevel 1 exit 1
 
-:: Install
-copy Release\igraph.lib %LIBRARY_LIB% || exit 1
-xcopy /S /I include %LIBRARY_INC%\igraph || exit 1
+cd build-cpp
+
+cmake -GNinja ^
+      -DCMAKE_BUILD_TYPE=Release ^
+      -DCMAKE_PREFIX_PATH=%CONDA_PREFIX% ^
+      -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
+      -DCMAKE_POSITION_INDEPENDENT_CODE=on ^
+      -DBUILD_SHARED_LIBS=on ^
+      ..
+
+cmake --build . --config Release --target install
+
+if errorlevel 1 exit 1

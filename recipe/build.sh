@@ -1,17 +1,19 @@
 #!/bin/env bash
-# Get an updated config.sub and config.guess
-cp $BUILD_PREFIX/share/libtool/build-aux/config.* .
 
-set -x -e
+set -ex
 
-export LIBIGRAPH_FALLBACK_INCLUDE_DIRS="${PREFIX}/include"
-export LIBIGRAPH_FALLBACK_LIBRARY_DIRS="${PREFIX}/lib"
+mkdir -p build
+pushd build
 
-# fix the simple test runner which doesn't use ldflags
-export CC="${CC} ${CFLAGS} ${LDFLAGS}"
+cmake -GNinja \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_PREFIX_PATH=$PREFIX \
+      -DCMAKE_INSTALL_LIBDIR=lib \
+      -DCMAKE_INSTALL_PREFIX=$PREFIX \
+      -DCMAKE_C_FLAGS="$CFLAGS" \
+      -DCMAKE_POSITION_INDEPENDENT_CODE=on \
+      -DBUILD_SHARED_LIBS=on \
+      ..
+cmake --build . --config Release --target install
 
-./configure --prefix=${PREFIX}
-make -j $CPU_COUNT | sed "s|$PREFIX|<PREFIX>|g"
-(make check | sed "s|$PREFIX|<PREFIX>|g") || (cat tests/testsuite.log && exit 1)
-make install
-mv igraph.pc ${PREFIX}/lib/pkgconfig
+popd
