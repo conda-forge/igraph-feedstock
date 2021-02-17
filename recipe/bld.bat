@@ -13,6 +13,8 @@ cmake -GNinja ^
       -DBUILD_SHARED_LIBS=on ^
       ..
 
+cmake --build . --config Release --target igraph
+cmake --build . --config Release --target check
 cmake --build . --config Release --target install
 
 if errorlevel 1 exit 1

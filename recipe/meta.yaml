@@ -48,15 +48,16 @@ requirements:
     - gmp  # [not win]
 
 test:
+  files:
+    - igraph_test.c
   requires:
     - pkg-config  # [not win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
     - vs2017_{{ target_platform }}  # [win]
-    - cmake
   commands:
-    - cd build && cmake --build . --target check
+-    - pkg-config --exists igraph  # [not win]
 
 about:
   home: http://igraph.org/c/
