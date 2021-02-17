@@ -57,7 +57,7 @@ test:
     - {{ compiler('fortran') }}
     - vs2017_{{ target_platform }}  # [win]
   commands:
--    - pkg-config --exists igraph  # [not win]
+    - pkg-config --exists igraph  # [not win]
 
 about:
   home: http://igraph.org/c/
