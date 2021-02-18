@@ -1,15 +1,18 @@
 @echo on
 
-mkdir build-cpp
+mkdir build
 if errorlevel 1 exit 1
 
-cd build-cpp
+cd build
 
 cmake -GNinja ^
       -DCMAKE_BUILD_TYPE=Release ^
       -DCMAKE_PREFIX_PATH=%CONDA_PREFIX% ^
+      -DCMAKE_INSTALL_LIBDIR=%LIBRARY_LIB% ^
+      -DCMAKE_INSTALL_INCLUDEDIR=%LIBRARY_INC% ^
       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
       -DCMAKE_POSITION_INDEPENDENT_CODE=on ^
+      -DBLA_VENDOR=OpenBLAS ^
       -DBUILD_SHARED_LIBS=on ^
       ..
 
