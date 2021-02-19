@@ -3,6 +3,15 @@
 set -ex
 system=$(uname -s)
 
+case $system in
+    "Linux" )
+        ENABLE_LTO=1
+	;;
+    "Darwin" )
+        ENABLE_LTO=0
+    ;;
+esac
+
 mkdir -p build
 pushd build
 
@@ -21,7 +30,7 @@ cmake -GNinja \
     -DIGRAPH_USE_INTERNAL_CXSPARSE=0 \
     -DIGRAPH_USE_INTERNAL_GMP=0 \
     -DBUILD_SHARED_LIBS=on \
-    -DIGRAPH_ENABLE_LTO=1 \
+    -DIGRAPH_ENABLE_LTO=$ENABLE_LTO \
     -DIGRAPH_ENABLE_TLS=1 \
     -DBUILD_SHARED_LIBS=on \
     ..
