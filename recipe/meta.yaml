@@ -31,11 +31,11 @@ requirements:
     - glpk
     - suitesparse
     - libxml2
-    - arpack
     - gmp  # [not win]
   host:
     - libblas
     - liblapack
+    - arpack
     - icu  # [not win]
     - libiconv  # [not win]
     - xz  # [not win]
