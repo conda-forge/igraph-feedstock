@@ -11,7 +11,7 @@ source:
   sha256: 012e5d5a50420420588c33ec114c6b3000ccde544db3f25c282c1931c462ad7a
 
 build:
-  skip: True  # [win and vc<14]
+  skip: True  # [(win and vc<14) or arm64]
   number: 0
   script_env:
    - ENABLE_LTO=1  # [not osx]
