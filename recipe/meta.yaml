@@ -19,7 +19,7 @@ build:
    - INTERNAL_ARPACK=0  # [not arm64]
    - INTERNAL_ARPACK=1  # [arm64]
    - INTERNAL_SUITESPARSE=0  # [not arm64]
-   - INTERNAL_SUITESPARSE=1  # [not arm64]
+   - INTERNAL_SUITESPARSE=1  # [arm64]
 
   run_exports:
     - {{ pin_subpackage("igraph", max_pin="x.x") }}
@@ -32,17 +32,17 @@ requirements:
     - vs2017_{{ target_platform }}  # [win]
     - cmake
     - ninja
-    - arpack   # [not arm64]
     - make  # [not win]
     - python  # [win]
     - pkg-config  # [not win]
+    - glpk
+    - libxml2
+    - suitesparse  # [not arm64]
+    - arpack   # [not arm64]
+    - gmp  # [not win]
   host:
     - libblas
     - liblapack
-    - glpk
-    - suitesparse  # [not arm64]
-    - libxml2
-    - gmp  # [not win]
     - icu  # [not win]
     - libiconv  # [not win]
     - xz  # [not win]
