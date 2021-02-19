@@ -28,14 +28,14 @@ requirements:
     - make  # [not win]
     - python  # [win]
     - pkg-config  # [not win]
-    - glpk
-    - suitesparse
-    - libxml2
-    - gmp  # [not win]
   host:
     - libblas
     - liblapack
     - arpack
+    - glpk
+    - suitesparse
+    - libxml2
+    - gmp  # [not win]
     - icu  # [not win]
     - libiconv  # [not win]
     - xz  # [not win]
