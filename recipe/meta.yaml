@@ -29,19 +29,19 @@ requirements:
     - python  # [win]
     - pkg-config  # [not win]
     - glpk
-    - openblas
     - suitesparse
     - libxml2
     - arpack
     - gmp  # [not win]
   host:
+    - libblas
+    - liblapack
     - icu  # [not win]
     - libiconv  # [not win]
     - xz  # [not win]
     - zlib  # [not win]
   run:
     - glpk
-    - openblas
     - suitesparse
     - libxml2
     - arpack
