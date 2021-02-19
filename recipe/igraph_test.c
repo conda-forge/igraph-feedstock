@@ -2,7 +2,7 @@
 
 int main(void)
 {
-     igraph_integer_t diameter;
+     igraph_real_t diameter;
      igraph_t graph;
      igraph_rng_seed(igraph_rng_default(), 42);
      igraph_erdos_renyi_game(&graph, IGRAPH_ERDOS_RENYI_GNP, 1000, 5.0/1000,
