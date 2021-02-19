@@ -6,7 +6,7 @@ if errorlevel 1 exit 1
 cd build
 
 cmake -GNinja ^
-      -DCMAKE_BUILD_TYPE=Release ^
+      -DCMAKE_BUILD_TYPE=Debug ^
       -DCMAKE_PREFIX_PATH=%CONDA_PREFIX% ^
       -DCMAKE_INSTALL_LIBDIR=%LIBRARY_LIB% ^
       -DCMAKE_INSTALL_INCLUDEDIR=%LIBRARY_INC% ^
@@ -24,10 +24,10 @@ cmake -GNinja ^
       -DIGRAPH_GRAPHML_SUPPORT=1 ^
       ..
 
-cmake --build . --config Release --target igraph
-cmake --build . --config Release --target build_tests
-ctest --progress --output-on-failure --config C Release
+cmake --build . --config Debug --target igraph
+cmake --build . --config Debug --target build_tests
+ctest --progress --output-on-failure --config C Debug
 if errorlevel 1 exit 1
-cmake --build . --config Release --target install
+cmake --build . --config Debug --target install
 
 if errorlevel 1 exit 1
