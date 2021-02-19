@@ -3,15 +3,6 @@
 set -ex
 system=$(uname -s)
 
-case $system in
-    "Linux" )
-        ENABLE_LTO=1
-	;;
-    "Darwin" )
-        ENABLE_LTO=0
-    ;;
-esac
-
 mkdir -p build
 pushd build
 
@@ -25,9 +16,9 @@ cmake -GNinja \
     -DCMAKE_POSITION_INDEPENDENT_CODE=on \
     -DIGRAPH_USE_INTERNAL_BLAS=0 \
     -DIGRAPH_USE_INTERNAL_LAPACK=0 \
-    -DIGRAPH_USE_INTERNAL_ARPACK=0 \
+    -DIGRAPH_USE_INTERNAL_ARPACK=$INTERNAL_ARPACK \
     -DIGRAPH_USE_INTERNAL_GLPK=0 \
-    -DIGRAPH_USE_INTERNAL_CXSPARSE=0 \
+    -DIGRAPH_USE_INTERNAL_CXSPARSE=$INTERNAL_SUITESPARSE \
     -DIGRAPH_USE_INTERNAL_GMP=0 \
     -DBUILD_SHARED_LIBS=on \
     -DIGRAPH_ENABLE_LTO=$ENABLE_LTO \

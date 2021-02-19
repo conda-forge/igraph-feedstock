@@ -13,6 +13,14 @@ source:
 build:
   skip: True  # [win and vc<14]
   number: 0
+  script_env:
+   - ENABLE_LTO=1 # [not osx]
+   - ENABLE_LTO=0 # [osx]
+   - INTERNAL_ARPACK=0  # [not arm64]
+   - INTERNAL_ARPACK=1  # [arm64]
+   - INTERNAL_SUITESPARSE=0  # [not arm64]
+   - INTERNAL_SUITESPARSE=1  # [not arm64]
+
   run_exports:
     - {{ pin_subpackage("igraph", max_pin="x.x") }}
 
@@ -21,19 +29,18 @@ requirements:
     - libtool  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('fortran') }}
     - vs2017_{{ target_platform }}  # [win]
     - cmake
     - ninja
+    - arpack   # [not arm64]
     - make  # [not win]
     - python  # [win]
     - pkg-config  # [not win]
   host:
     - libblas
     - liblapack
-    - arpack
     - glpk
-    - suitesparse
+    - suitesparse  # [not arm64]
     - libxml2
     - gmp  # [not win]
     - icu  # [not win]
@@ -42,9 +49,9 @@ requirements:
     - zlib  # [not win]
   run:
     - glpk
-    - suitesparse
     - libxml2
-    - arpack
+    - suitesparse  # [not arm64]
+    - arpack  # [not arm64]
     - gmp  # [not win]
 
 test:
@@ -54,7 +61,6 @@ test:
     - pkg-config  # [not win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('fortran') }}
     - vs2017_{{ target_platform }}  # [win]
   commands:
     - pkg-config --exists igraph  # [not win]
