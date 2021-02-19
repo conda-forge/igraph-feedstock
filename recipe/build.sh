@@ -9,6 +9,7 @@ cmake -GNinja \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_PREFIX_PATH=$PREFIX \
       -DCMAKE_INSTALL_LIBDIR=lib \
+      -DLibXml2_ROOT=$PREFIX \
       -DCMAKE_INSTALL_INCLUDEDIR=include \
       -DCMAKE_INSTALL_PREFIX=$PREFIX \
       -DCMAKE_C_FLAGS="$CFLAGS" \
