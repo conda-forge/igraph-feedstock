@@ -14,8 +14,8 @@ build:
   skip: True  # [win and vc<14]
   number: 0
   script_env:
-   - ENABLE_LTO=1 # [not osx]
-   - ENABLE_LTO=0 # [osx]
+   - ENABLE_LTO=1  # [not osx]
+   - ENABLE_LTO=0  # [osx]
    - INTERNAL_ARPACK=0  # [not arm64]
    - INTERNAL_ARPACK=1  # [arm64]
    - INTERNAL_SUITESPARSE=0  # [not arm64]
