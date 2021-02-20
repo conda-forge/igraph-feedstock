@@ -9,6 +9,8 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: 012e5d5a50420420588c33ec114c6b3000ccde544db3f25c282c1931c462ad7a
+  patches:
+    - check-test-path.patch
 
 build:
   skip: True  # [(win and vc<14) or arm64]
