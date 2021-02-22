@@ -7,7 +7,7 @@ cd build
 
 cmake -GNinja ^
       -DCMAKE_BUILD_TYPE=Release ^
-      -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
+      -DCMAKE_PREFIX_PATH=%CONDA_PREFIX% ^
       -DCMAKE_INSTALL_LIBDIR=%LIBRARY_LIB% ^
       -DCMAKE_INSTALL_INCLUDEDIR=%LIBRARY_INC% ^
       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
@@ -19,9 +19,9 @@ cmake -GNinja ^
       -DIGRAPH_USE_INTERNAL_CXSPARSE=1 ^
       -DIGRAPH_USE_INTERNAL_GMP=1 ^
       -DBUILD_SHARED_LIBS=on ^
-      -DIGRAPH_ENABLE_LTO=1 ^
-      -DIGRAPH_ENABLE_TLS=1 ^
-      -DIGRAPH_GRAPHML_SUPPORT=1 ^
+      -DIGRAPH_ENABLE_LTO=0 ^
+      -DIGRAPH_ENABLE_TLS=0 ^
+      -DIGRAPH_GRAPHML_SUPPORT=0 ^
       ..
 
 cmake --build . --config Release --target igraph
