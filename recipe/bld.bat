@@ -7,7 +7,7 @@ cd build
 
 cmake -GNinja ^
       -DCMAKE_BUILD_TYPE=Release ^
-      -DCMAKE_PREFIX_PATH=%CONDA_PREFIX% ^
+      -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
       -DCMAKE_INSTALL_LIBDIR=%LIBRARY_LIB% ^
       -DCMAKE_INSTALL_INCLUDEDIR=%LIBRARY_INC% ^
       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
@@ -26,7 +26,7 @@ cmake -GNinja ^
 
 cmake --build . --config Release --target igraph
 cmake --build . --config Release --target build_tests
-ctest --progress --output-on-failure --config C Release
+ctest --progress --output-on-failure --config Release
 if errorlevel 1 exit 1
 cmake --build . --config Release --target install
 
