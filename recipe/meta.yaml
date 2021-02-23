@@ -18,8 +18,8 @@ build:
   script_env:
    - ENABLE_LTO=1  # [not osx]
    - ENABLE_LTO=0  # [osx]
-   - INTERNAL_ARPACK=0  # [not arm64]
-   - INTERNAL_ARPACK=1  # [arm64]
+   - INTERNAL_ARPACK=0  # [not arm64 and not aarch64]
+   - INTERNAL_ARPACK=1  # [arm64 or aarch64]
    - INTERNAL_SUITESPARSE=0  # [not arm64]
    - INTERNAL_SUITESPARSE=1  # [arm64]
 
@@ -40,7 +40,7 @@ requirements:
     - glpk
     - libxml2
     - suitesparse  # [not arm64]
-    - arpack   # [not arm64]
+    - arpack   # [not arm64 and not aarch64]
     - gmp  # [not win]
   host:
     - libblas
