@@ -1,16 +1,25 @@
 diff --git a/etc/cmake/test_helpers.cmake b/etc/cmake/test_helpers.cmake
-index 693ba3c28..446d8752d 100644
+index 693ba3c28..5faed5834 100644
 --- a/etc/cmake/test_helpers.cmake
 +++ b/etc/cmake/test_helpers.cmake
-@@ -70,8 +70,9 @@ function(add_legacy_test FOLDER NAME NAMESPACE)
+@@ -62,16 +62,13 @@ function(add_legacy_test FOLDER NAME NAMESPACE)
+     # so that igraph.dll is found when running the tests.
+     SET(IGRAPH_LIBDIR $<TARGET_FILE_DIR:igraph>)
+ 
+-    # The next line is necessitated by MinGW on Windows. MinGW uses forward slashes in
+-    # IGRAPH_LIBDIR, but we need to supply CTest with backslashes because CTest is executed
+-    # in a cmd.exe shell. So we simply replace forward slashes with backslases in
+-    # IGRAPH_LIBDIR.
+-    string(REPLACE "/" "\\" IGRAPH_LIBDIR ${IGRAPH_LIBDIR})
++    SET(TEST_PATHS ${IGRAPH_LIBDIR} $ENV{PATH})
++    cmake_path(CONVERT TEST_PATHS TO_NATIVE_PATH_LIST TEST_CORRECT_PATHS NORMALIZE)
  
      # Semicolons are used as list separators in CMake so we need to escape them in the PATH,
      # otherwise the PATH envvar gets split by CMake before it passes the PATH on to CTest.
 -    string(JOIN "\;" CORRECT_PATH $ENV{PATH})
 -    SET_TESTS_PROPERTIES(${TEST_NAME} PROPERTIES ENVIRONMENT "PATH=${IGRAPH_LIBDIR}\;${CORRECT_PATH}" )
-+    string(JOIN "\\\;" CORRECT_PATH $ENV{PATH})
-+    MESSAGE(STATUS "CORRECT_PATH: ${CORRECT_PATH}")
-+    SET_TESTS_PROPERTIES(${TEST_NAME} PROPERTIES ENVIRONMENT "PATH=${IGRAPH_LIBDIR}\\\;${CORRECT_PATH}" )
++    MESSAGE(STATUS "TEST_CORRECT_PATHS: ${TEST_CORRECT_PATHS}")
++    SET_TESTS_PROPERTIES(${TEST_NAME} PROPERTIES ENVIRONMENT "PATH=${TEST_CORRECT_PATHS}" )
    endif()
  endfunction()
  
