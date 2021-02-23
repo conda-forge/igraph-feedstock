@@ -6,7 +6,7 @@ index 693ba3c28..6a9f7c74c 100644
      # Semicolons are used as list separators in CMake so we need to escape them in the PATH,
      # otherwise the PATH envvar gets split by CMake before it passes the PATH on to CTest.
      string(JOIN "\;" CORRECT_PATH $ENV{PATH})
-+    MESSAGE(STATUS "IGRAPH_LIBDIR: ${IGRAPH_LIBDIR}")
++    MESSAGE(STATUS "CORRECT_PATH: ${CORRECT_PATH}")
      SET_TESTS_PROPERTIES(${TEST_NAME} PROPERTIES ENVIRONMENT "PATH=${IGRAPH_LIBDIR}\;${CORRECT_PATH}" )
    endif()
  endfunction()
