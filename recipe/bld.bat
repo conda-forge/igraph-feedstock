@@ -5,6 +5,9 @@ if errorlevel 1 exit 1
 
 cd build
 
+where cmake
+where ctest
+
 cmake -GNinja ^
       -DCMAKE_BUILD_TYPE=Release ^
       -DCMAKE_PREFIX_PATH=%CONDA_PREFIX% ^
