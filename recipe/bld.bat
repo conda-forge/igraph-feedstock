@@ -19,9 +19,9 @@ cmake -GNinja ^
       -DIGRAPH_USE_INTERNAL_CXSPARSE=1 ^
       -DIGRAPH_USE_INTERNAL_GMP=1 ^
       -DBUILD_SHARED_LIBS=on ^
-      -DIGRAPH_ENABLE_LTO=0 ^
+      -DIGRAPH_ENABLE_LTO=1 ^
       -DIGRAPH_ENABLE_TLS=0 ^
-      -DIGRAPH_GRAPHML_SUPPORT=0 ^
+      -DIGRAPH_GRAPHML_SUPPORT=1 ^
       ..
 
 cmake --build . --config Release --target igraph
