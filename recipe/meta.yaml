@@ -19,9 +19,7 @@ build:
    - ENABLE_LTO=1
    - ENABLE_LTO=0  # [osx]
    - INTERNAL_BLAS=0
-   - INTERNAL_BLAS=1  # [aarch64]
    - INTERNAL_LAPACK=0
-   - INTERNAL_LAPACK=1  # [aarch64]
    - INTERNAL_ARPACK=0
    - INTERNAL_ARPACK=1  # [arm64 or aarch64]
    - INTERNAL_GLPK=0
