@@ -16,12 +16,20 @@ build:
   skip: True  # [(win and vc<14) or arm64]
   number: 0
   script_env:
-   - ENABLE_LTO=1  # [not osx]
+   - ENABLE_LTO=1
    - ENABLE_LTO=0  # [osx]
-   - INTERNAL_ARPACK=0  # [not arm64 and not aarch64]
+   - INTERNAL_BLAS=0
+   - INTERNAL_BLAS=1  # [aarch64]
+   - INTERNAL_LAPACK=0
+   - INTERNAL_LAPACK=1  # [aarch64]
+   - INTERNAL_ARPACK=0
    - INTERNAL_ARPACK=1  # [arm64 or aarch64]
-   - INTERNAL_SUITESPARSE=0  # [not arm64]
-   - INTERNAL_SUITESPARSE=1  # [arm64]
+   - INTERNAL_GLPK=0
+   - INTERNAL_GLPK=1  # [aarch64]
+   - INTERNAL_SUITESPARSE=0
+   - INTERNAL_SUITESPARSE=1  # [arm64 or aarch64]
+   - INTERNAL_GMP=0
+   - INTERNAL_GMP=1  # [aarch64]
 
   run_exports:
     - {{ pin_subpackage("igraph", max_pin="x.x") }}
