@@ -27,7 +27,7 @@ build:
    - INTERNAL_GLPK=0
    - INTERNAL_GLPK=1  # [aarch64]
    - INTERNAL_SUITESPARSE=0
-   - INTERNAL_SUITESPARSE=1  # [arm64 or aarch64]
+   - INTERNAL_SUITESPARSE=1  # [arm64]
    - INTERNAL_GMP=0
    - INTERNAL_GMP=1  # [aarch64]
 
