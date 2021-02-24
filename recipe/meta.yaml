@@ -13,7 +13,7 @@ source:
     - correct-test-path.patch
 
 build:
-  skip: True  # [(win and vc<14) or arm64]
+  skip: True  # [win and vc<14]
   number: 0
   script_env:
    - ENABLE_LTO=1
@@ -26,6 +26,7 @@ build:
    - INTERNAL_SUITESPARSE=0
    - INTERNAL_SUITESPARSE=1  # [arm64]
    - INTERNAL_GMP=0
+   - F2C_EXTERNAL_ARITH_HEADER=arith_arm64.h  # [arm64]
 
   run_exports:
     - {{ pin_subpackage("igraph", max_pin="x.x") }}
