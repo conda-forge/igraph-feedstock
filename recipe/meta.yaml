@@ -53,7 +53,7 @@ requirements:
     - glpk
     - libxml2
     - suitesparse  # [not arm64]
-    - arpack  # [not arm64]
+    - arpack  # [not arm64 and not aarch64]
     - gmp  # [not win]
 
 test:
