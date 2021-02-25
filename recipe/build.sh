@@ -6,7 +6,7 @@ system=$(uname -s)
 mkdir -p build
 pushd build
 
-cmake -GNinja \
+cmake ${CMAKE_ARGS} -GNinja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_PREFIX_PATH=$BUILD_PREFIX \
     -DCMAKE_INSTALL_LIBDIR=lib \
