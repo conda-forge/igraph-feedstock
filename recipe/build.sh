@@ -25,10 +25,14 @@ cmake ${CMAKE_ARGS} -GNinja \
     -DIGRAPH_ENABLE_LTO=$ENABLE_LTO \
     -DIGRAPH_ENABLE_TLS=1 \
     -DBUILD_SHARED_LIBS=on \
+    -DBLAS_LIBRARIES="$PREFIX/lib/libblas${SHLIB_EXT}" \
+    -DLAPACK_LIBRARIES="$PREFIX/lib/liblapack${SHLIB_EXT}" \
     ..
 
-cmake --build . --config Release --target igraph
-cmake --build . --config Release --target check
+cmake --build . --config Release --target igraph -- -j${CPU_COUNT}
+if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
+  cmake --build . --config Release --target check
+fi
 cmake --build . --config Release --target install
 
 
