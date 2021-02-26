@@ -12,6 +12,7 @@ source:
   patches:
     - correct-test-path.patch
     - 0001-feat-allow-external-f2c-arith.h-headers-when-cross-c.patch
+    - 0002-tests-CMake-added-pre-existing-linker-flags.patch
 
 build:
   skip: True  # [win and vc<14]
@@ -40,7 +41,6 @@ requirements:
     - vs2017_{{ target_platform }}  # [win]
     - cmake
     - ninja
-    - arpack   # [not arm64]
     - make  # [not win]
     - python  # [win]
     - pkg-config  # [not win]
