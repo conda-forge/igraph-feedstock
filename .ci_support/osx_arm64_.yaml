@@ -16,12 +16,8 @@ glpk:
 - '4.65'
 gmp:
 - '6'
-icu:
-- '68'
 libblas:
 - 3.9 *netlib
-libiconv:
-- '1.16'
 liblapack:
 - 3.9 *netlib
 libxml2:
@@ -33,20 +29,10 @@ pin_run_as_build:
     max_pin: x.x
   gmp:
     max_pin: x
-  libiconv:
-    max_pin: x.x
   libxml2:
-    max_pin: x.x
-  xz:
-    max_pin: x.x
-  zlib:
     max_pin: x.x
 target_platform:
 - osx-arm64
-xz:
-- '5.2'
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-zlib:
-- '1.2'
