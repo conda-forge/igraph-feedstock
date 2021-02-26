@@ -1,0 +1,22 @@
+From 1674884ea7dc6042cf3b604dfbf14f6767b85629 Mon Sep 17 00:00:00 2001
+From: Vincent Traag <vincent@traag.net>
+Date: Thu, 25 Feb 2021 10:34:31 +0100
+Subject: [PATCH] tests/CMake: added pre-existing linker flags.
+
+
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 684d7e64e..855fab96e 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -21,7 +21,7 @@ check_c_compiler_flag("" HAVE_ENABLE_NEW_DTAGS)
+ set(CMAKE_REQUIRED_FLAGS ${ORIG_CMAKE_REQUIRED_FLAGS})
+ if (HAVE_ENABLE_NEW_DTAGS AND BUILD_SHARED_LIBS)
+   message(STATUS "Disabling new dtags for testing to use RPATH to ensure the correct library is found.")
+-  set(CMAKE_EXE_LINKER_FLAGS "-Wl,--disable-new-dtags")
++  set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} "-Wl,--disable-new-dtags")
+ endif()
+ 
+ # version.at
+-- 
+2.25.1
+
