@@ -40,6 +40,7 @@ requirements:
     - vs2017_{{ target_platform }}  # [win]
     - cmake
     - ninja
+    - arpack   # [not arm64]
     - make  # [not win]
     - python  # [win]
     - pkg-config  # [not win]
