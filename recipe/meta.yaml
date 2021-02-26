@@ -22,7 +22,7 @@ build:
    - INTERNAL_BLAS=0
    - INTERNAL_LAPACK=0
    - INTERNAL_ARPACK=0
-   - INTERNAL_ARPACK=1  # [arm64 or aarch64]
+   - INTERNAL_ARPACK=1  # [arm64]
    - INTERNAL_GLPK=0
    - INTERNAL_SUITESPARSE=0
    - INTERNAL_SUITESPARSE=1  # [arm64]
@@ -47,7 +47,7 @@ requirements:
     - glpk
     - libxml2
     - suitesparse  # [not arm64]
-    - arpack   # [not arm64 and not aarch64]
+    - arpack   # [not arm64]
     - gmp  # [not win]
     - libblas
     - liblapack
@@ -59,7 +59,7 @@ requirements:
     - glpk
     - libxml2
     - suitesparse  # [not arm64]
-    - arpack  # [not arm64 and not aarch64]
+    - arpack  # [not arm64]
     - gmp  # [not win]
 
 test:
