@@ -52,10 +52,6 @@ requirements:
     - gmp  # [not win]
     - libblas
     - liblapack
-    - icu  # [not win]
-    - libiconv  # [not win]
-    - xz  # [not win]
-    - zlib  # [not win]
   run:
     - glpk
     - libxml2
