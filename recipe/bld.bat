@@ -5,7 +5,7 @@ if errorlevel 1 exit 1
 
 cd build
 
-cmake ${CMAKE_ARGS} -GNinja ^
+cmake %CMAKE_ARGS% -GNinja ^
       -DCMAKE_BUILD_TYPE=Release ^
       -DCMAKE_PREFIX_PATH=%CONDA_PREFIX% ^
       -DCMAKE_INSTALL_LIBDIR=%LIBRARY_LIB% ^
