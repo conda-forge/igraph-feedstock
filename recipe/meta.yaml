@@ -18,6 +18,8 @@ build:
   skip: True  # [win and vc<14]
   number: 0
   script_env:
+   - INTERNAL_ARPACK=0
+   - INTERNAL_ARPACK=1  # [arm64]
    - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
 
   run_exports:
