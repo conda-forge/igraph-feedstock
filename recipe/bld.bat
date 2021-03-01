@@ -5,9 +5,6 @@ if errorlevel 1 exit 1
 
 cd build
 
-where cmake
-where ctest
-
 cmake -GNinja ^
       -DCMAKE_BUILD_TYPE=Release ^
       -DCMAKE_PREFIX_PATH=%CONDA_PREFIX% ^
@@ -26,11 +23,15 @@ cmake -GNinja ^
       -DIGRAPH_ENABLE_TLS=1 ^
       -DIGRAPH_GRAPHML_SUPPORT=1 ^
       ..
+if errorlevel 1 exit 1
 
 cmake --build . --config Release --target igraph
+if errorlevel 1 exit 1
+
 cmake --build . --config Release --target build_tests
+if errorlevel 1 exit 1
+
 ctest --progress --output-on-failure --config Release --extra-verbose
 if errorlevel 1 exit 1
 cmake --build . --config Release --target install
-
 if errorlevel 1 exit 1
