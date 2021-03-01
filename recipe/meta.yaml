@@ -39,7 +39,7 @@ requirements:
   host:
     - glpk
     - libxml2
-    - suitesparse  # [not arm64]
+    - suitesparse
     - arpack   # [not arm64]
     - gmp  # [not win]
     - mpir  # [win]
@@ -48,7 +48,7 @@ requirements:
   run:
     - glpk
     - libxml2
-    - suitesparse  # [not arm64]
+    - suitesparse
     - arpack  # [not arm64]
     - gmp  # [not win]
     - mpir  # [win]
