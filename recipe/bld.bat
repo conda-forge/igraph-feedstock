@@ -23,7 +23,7 @@ cmake -GNinja ^
       -DIGRAPH_USE_INTERNAL_GMP=0 ^
       -DBUILD_SHARED_LIBS=on ^
       -DIGRAPH_ENABLE_LTO=1 ^
-      -DIGRAPH_ENABLE_TLS=0 ^
+      -DIGRAPH_ENABLE_TLS=1 ^
       -DIGRAPH_GRAPHML_SUPPORT=1 ^
       ..
 
