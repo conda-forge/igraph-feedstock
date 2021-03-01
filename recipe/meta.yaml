@@ -40,6 +40,7 @@ requirements:
     - suitesparse  # [not arm64]
     - arpack   # [not arm64]
     - gmp  # [not win]
+    - mpir  # [win]
     - libblas
     - liblapack
   run:
@@ -48,6 +49,7 @@ requirements:
     - suitesparse  # [not arm64]
     - arpack  # [not arm64]
     - gmp  # [not win]
+    - mpir  # [win]
 
 test:
   files:
