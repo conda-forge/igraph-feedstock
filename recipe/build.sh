@@ -1,17 +1,39 @@
 #!/bin/env bash
-# Get an updated config.sub and config.guess
-cp $BUILD_PREFIX/share/libtool/build-aux/config.* .
 
-set -x -e
+set -ex
+system=$(uname -s)
 
-export LIBIGRAPH_FALLBACK_INCLUDE_DIRS="${PREFIX}/include"
-export LIBIGRAPH_FALLBACK_LIBRARY_DIRS="${PREFIX}/lib"
+mkdir -p build
+pushd build
 
-# fix the simple test runner which doesn't use ldflags
-export CC="${CC} ${CFLAGS} ${LDFLAGS}"
+cmake ${CMAKE_ARGS} -GNinja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_PREFIX_PATH=$BUILD_PREFIX \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_INCLUDEDIR=include \
+    -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DCMAKE_C_FLAGS="$CFLAGS" \
+    -DCMAKE_POSITION_INDEPENDENT_CODE=on \
+    -DF2C_EXTERNAL_ARITH_HEADER=$F2C_EXTERNAL_ARITH_HEADER \
+    -DIGRAPH_USE_INTERNAL_BLAS=0 \
+    -DIGRAPH_USE_INTERNAL_LAPACK=0 \
+    -DIGRAPH_USE_INTERNAL_ARPACK=$INTERNAL_ARPACK \
+    -DIGRAPH_USE_INTERNAL_GLPK=0 \
+    -DIGRAPH_USE_INTERNAL_CXSPARSE=0 \
+    -DIGRAPH_USE_INTERNAL_GMP=0 \
+    -DBUILD_SHARED_LIBS=on \
+    -DIGRAPH_ENABLE_LTO=1 \
+    -DIGRAPH_ENABLE_TLS=1 \
+    -DBUILD_SHARED_LIBS=on \
+    -DBLAS_LIBRARIES="$PREFIX/lib/libblas${SHLIB_EXT}" \
+    -DLAPACK_LIBRARIES="$PREFIX/lib/liblapack${SHLIB_EXT}" \
+    ..
 
-./configure --prefix=${PREFIX}
-make -j $CPU_COUNT | sed "s|$PREFIX|<PREFIX>|g"
-(make check | sed "s|$PREFIX|<PREFIX>|g") || (cat tests/testsuite.log && exit 1)
-make install
-mv igraph.pc ${PREFIX}/lib/pkgconfig
+cmake --build . --config Release --target igraph -- -j${CPU_COUNT}
+if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
+  cmake --build . --config Release --target check -j${CPU_COUNT}
+fi
+cmake --build . --config Release --target install -j${CPU_COUNT}
+
+
+popd

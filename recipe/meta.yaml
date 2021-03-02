@@ -1,22 +1,27 @@
 {% set name = "igraph" %}
-{% set version = "0.8.3" %}
+{% set version = "0.9.0" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz  # [not win]
-  url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz  # [not win]
-  sha256: cc935826d3725a9d95f1b0cc46e3c08c554b29cdd6943f0286d965898120b3f1  # [not win]
-
-  fn: {{ name }}-{{ version }}.zip  # [win]
-  url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}-msvc.zip  # [win]
-  sha256: a6ab981c88b31bffb833a077235f1e3e46d4576a254c9a03397dcc7ebf90e942  # [win]
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 012e5d5a50420420588c33ec114c6b3000ccde544db3f25c282c1931c462ad7a
+  patches:
+    - correct-test-path.patch
+    - 0001-feat-allow-external-f2c-arith.h-headers-when-cross-c.patch
+    - 0002-tests-CMake-added-pre-existing-linker-flags.patch
 
 build:
   skip: True  # [win and vc<14]
-  number: 2
+  number: 0
+  script_env:
+   - INTERNAL_ARPACK=0
+   - INTERNAL_ARPACK=1  # [arm64]
+   - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
+
   run_exports:
     - {{ pin_subpackage("igraph", max_pin="x.x") }}
 
@@ -25,26 +30,28 @@ requirements:
     - libtool  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('fortran') }}
     - vs2017_{{ target_platform }}  # [win]
-    - pkg-config  # [not win]
+    - cmake
+    - ninja
     - make  # [not win]
     - python  # [win]
-    - msinttypes  # [win]
+    - pkg-config  # [not win]
   host:
+    - glpk
+    - libxml2
+    - suitesparse
+    - arpack   # [not arm64]
     - gmp  # [not win]
-    - icu  # [not win]
-    - libiconv  # [not win]
-    - libxml2  # [not win]
-    - xz  # [not win]
-    - zlib  # [not win]
+    - mpir  # [win]
+    - libblas
+    - liblapack
   run:
+    - glpk
+    - libxml2
+    - suitesparse
+    - arpack  # [not arm64]
     - gmp  # [not win]
-    - icu  # [not win]
-    - libiconv  # [not win]
-    - libxml2  # [not win]
-    - xz  # [not win]
-    - zlib  # [not win]
+    - mpir  # [win]
 
 test:
   files:
@@ -53,20 +60,18 @@ test:
     - pkg-config  # [not win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('fortran') }}
+    - vs2017_{{ target_platform }}  # [win]
   commands:
     - pkg-config --exists igraph  # [not win]
+    - pkg-config --libs --cflags igraph  # [not win]
 
 about:
   home: http://igraph.org/c/
   license: GPL-2.0-or-later
   license_family: GPL
   license_file:
-    - COPYING  # [not win]
-    - ACKNOWLEDGEMENTS.md  # [not win]
-  license_file:
-    - '{{ environ["RECIPE_DIR"] }}/COPYING'  # [win]
-    - '{{ environ["RECIPE_DIR"] }}/ACKNOWLEDGEMENTS.md'  # [win]
+    - COPYING
+    - ACKNOWLEDGEMENTS.md
   summary: 'An open source and free collection of network analysis tool.'
   description: |
     igraph is a collection of network analysis tools with the emphasis on efficiency,
