@@ -31,6 +31,8 @@ pin_run_as_build:
     max_pin: x
   libxml2:
     max_pin: x.x
+suitesparse:
+- '5'
 target_platform:
 - osx-arm64
 zip_keys:

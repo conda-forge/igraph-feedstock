@@ -1,5 +1,5 @@
 {% set name = "igraph" %}
-{% set version = "0.9.0" %}
+{% set version = "0.9.1" %}
 
 package:
   name: {{ name }}
@@ -8,19 +8,14 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 012e5d5a50420420588c33ec114c6b3000ccde544db3f25c282c1931c462ad7a
-  patches:
-    - correct-test-path.patch
-    - 0001-feat-allow-external-f2c-arith.h-headers-when-cross-c.patch
-    - 0002-tests-CMake-added-pre-existing-linker-flags.patch
-
+  sha256: 1902810650e8f9d98feefa3eca735db5a879416d00a08f68aad2ca07964cee9f
 build:
-  skip: True  # [win and vc<14]
+  skip: true  # [win and vc<14]
   number: 0
   script_env:
-   - INTERNAL_ARPACK=0
-   - INTERNAL_ARPACK=1  # [arm64]
-   - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
+    - INTERNAL_ARPACK=0
+    - INTERNAL_ARPACK=1  # [arm64]
+    - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
 
   run_exports:
     - {{ pin_subpackage("igraph", max_pin="x.x") }}
@@ -72,7 +67,7 @@ about:
   license_file:
     - COPYING
     - ACKNOWLEDGEMENTS.md
-  summary: 'An open source and free collection of network analysis tool.'
+  summary: An open source and free collection of network analysis tool.
   description: |
     igraph is a collection of network analysis tools with the emphasis on efficiency,
     portabiliy and ease of use. igraph is open source and free. igraph can be
