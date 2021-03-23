@@ -9,18 +9,13 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: 1902810650e8f9d98feefa3eca735db5a879416d00a08f68aad2ca07964cee9f
-  patches:
-    - correct-test-path.patch
-    - 0001-feat-allow-external-f2c-arith.h-headers-when-cross-c.patch
-    - 0002-tests-CMake-added-pre-existing-linker-flags.patch
-
 build:
   skip: true  # [win and vc<14]
   number: 0
   script_env:
     - INTERNAL_ARPACK=0
-    - INTERNAL_ARPACK=1 # [arm64]
-    - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h # [arm64]
+    - INTERNAL_ARPACK=1  # [arm64]
+    - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
 
   run_exports:
     - {{ pin_subpackage("igraph", max_pin="x.x") }}
