@@ -11,7 +11,7 @@ source:
   sha256: 1902810650e8f9d98feefa3eca735db5a879416d00a08f68aad2ca07964cee9f
 build:
   skip: true  # [win and vc<14]
-  number: 0
+  number: 1
   script_env:
     - INTERNAL_ARPACK=0
     - INTERNAL_ARPACK=1  # [arm64]
@@ -35,7 +35,7 @@ requirements:
     - glpk
     - libxml2
     - suitesparse
-    - arpack   # [not arm64]
+    - arpack   # [not arm64 and not win]
     - gmp  # [not win]
     - mpir  # [win]
     - libblas
@@ -44,7 +44,7 @@ requirements:
     - glpk
     - libxml2
     - suitesparse
-    - arpack  # [not arm64]
+    - arpack  # [not arm64 and not win]
     - gmp  # [not win]
     - mpir  # [win]
 
