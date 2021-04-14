@@ -1,5 +1,5 @@
 {% set name = "igraph" %}
-{% set version = "0.9.1" %}
+{% set version = "0.9.2" %}
 
 package:
   name: {{ name }}
@@ -8,10 +8,10 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 1902810650e8f9d98feefa3eca735db5a879416d00a08f68aad2ca07964cee9f
+  sha256: fda86b5253daa3b994aaaa7aef0b8e4780dc8b2efbbdbf0aa71af9fedaecb073
 build:
   skip: true  # [win and vc<14]
-  number: 2
+  number: 0
   script_env:
     - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
 
