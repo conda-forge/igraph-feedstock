@@ -1,5 +1,5 @@
 {% set name = "igraph" %}
-{% set version = "0.9.5" %}
+{% set version = "0.9.6" %}
 
 package:
   name: {{ name }}
@@ -8,7 +8,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: c4e3f67892e1e287865d799162406b3f94916ad6f2cc069a9239e36ca495a17a
+  sha256: 7c299ec54eecfe413758c332a42c4cb71d02d2951b2ac232584d317c5792f387
 build:
   skip: true  # [win and vc<14]
   number: 0
