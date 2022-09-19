@@ -15,7 +15,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '14'
 glpk:
-- '4.65'
+- '5.0'
 gmp:
 - '6'
 libblas:
