@@ -30,7 +30,9 @@ cmake ${CMAKE_ARGS} -GNinja \
     ..
 
 cmake --build . --config Release --target igraph -- -j${CPU_COUNT}
-cmake --build . --config Release --target check -j${CPU_COUNT}
+if [[ $CONDA_BUILD_CROSS_COMPILATION != arm64* ]]; then
+  cmake --build . --config Release --target check -j${CPU_COUNT}
+fi
 cmake --build . --config Release --target install -j${CPU_COUNT}
 
 
