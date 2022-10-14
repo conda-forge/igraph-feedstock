@@ -26,15 +26,6 @@ libxml2:
 - '2.9'
 macos_machine:
 - arm64-apple-darwin20.0.0
-pin_run_as_build:
-  arpack:
-    max_pin: x.x.x
-  glpk:
-    max_pin: x.x
-  gmp:
-    max_pin: x
-  libxml2:
-    max_pin: x.x
 suitesparse:
 - '5'
 target_platform:
