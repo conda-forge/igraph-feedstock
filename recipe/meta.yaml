@@ -11,7 +11,7 @@ source:
   sha256: 11ac87336b7adc61b4cb3d9c29fd9ed74db383a1fd994f6c47a870a86f68038c
 build:
   skip: true  # [win and vc<14]
-  number: 3
+  number: 4
   script_env:
     - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
 
@@ -45,6 +45,8 @@ requirements:
     - arpack  # [not win]
     - gmp  # [not win]
     - mpir  # [win]
+    - libblas
+    - liblapack
 
 test:
   files:
