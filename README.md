@@ -1,11 +1,11 @@
-About igraph
-============
+About igraph-feedstock
+======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/igraph-feedstock/blob/main/LICENSE.txt)
 
 Home: http://igraph.org/c/
 
 Package license: GPL-2.0-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/igraph-feedstock/blob/main/LICENSE.txt)
 
 Summary: An open source and free collection of network analysis tool.
 
@@ -18,14 +18,7 @@ Current build status
 ====================
 
 
-<table><tr>
-    <td>Travis</td>
-    <td>
-      <a href="https://app.travis-ci.com/conda-forge/igraph-feedstock">
-        <img alt="linux" src="https://img.shields.io/travis/com/conda-forge/igraph-feedstock/main.svg?label=Linux">
-      </a>
-    </td>
-  </tr>
+<table>
     
   <tr>
     <td>Azure</td>
