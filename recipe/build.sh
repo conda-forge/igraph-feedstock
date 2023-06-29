@@ -27,6 +27,7 @@ cmake ${CMAKE_ARGS} -GNinja \
     -DBUILD_SHARED_LIBS=on \
     -DBLAS_LIBRARIES="$PREFIX/lib/libblas${SHLIB_EXT}" \
     -DLAPACK_LIBRARIES="$PREFIX/lib/liblapack${SHLIB_EXT}" \
+    -DLIBXML2_LIBRARIES="$PREFIX/lib/libxml2${SHLIB_EXT}" \
     ..
 
 cmake --build . --config Release --target igraph -- -j${CPU_COUNT}
