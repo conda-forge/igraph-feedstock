@@ -204,4 +204,5 @@ Feedstock Maintainers
 
 * [@sodre](https://github.com/sodre/)
 * [@vtraag](https://github.com/vtraag/)
+* [@xylar](https://github.com/xylar/)
 
