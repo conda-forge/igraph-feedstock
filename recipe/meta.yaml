@@ -9,8 +9,7 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: 99bf91ee90febeeb9a201f3e0c1d323c09214f0b5f37a4290dc3b63f52839d6d
-  patches:
-    - 0001-xmlentity-for-libxml2-2.11.patch
+
 build:
   skip: true  # [win and vc<14]
   number: 0
