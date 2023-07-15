@@ -1,5 +1,5 @@
 {% set name = "igraph" %}
-{% set version = "0.10.5" %}
+{% set version = "0.10.6" %}
 
 package:
   name: {{ name }}
@@ -8,9 +8,8 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 1c2725122fda9b72065095794bc7748939d90d942d312cb63c6160cd98d50f1e
-  patches:
-    - 0001-xmlentity-for-libxml2-2.11.patch
+  sha256: 99bf91ee90febeeb9a201f3e0c1d323c09214f0b5f37a4290dc3b63f52839d6d
+
 build:
   skip: true  # [win and vc<14]
   number: 0
