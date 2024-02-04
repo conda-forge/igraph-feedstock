@@ -9,8 +9,6 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: cade6db7edbd7b6f715706c88ac51cb95dd27512ce5bdc736dcdcb2efcacb5cc
-  patches:
-    - 0001_xml_const.patch
 
 build:
   skip: true  # [win and vc<14]
