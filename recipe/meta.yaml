@@ -12,7 +12,7 @@ source:
 
 build:
   skip: true  # [win and vc<14]
-  number: 0
+  number: 1
   script_env:
     - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
 
@@ -56,7 +56,6 @@ test:
     - pkg-config  # [not win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - vs2017_{{ target_platform }}  # [win]
   commands:
     - pkg-config --exists igraph  # [not win]
     - pkg-config --libs --cflags igraph  # [not win]
