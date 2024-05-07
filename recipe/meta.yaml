@@ -1,5 +1,5 @@
 {% set name = "igraph" %}
-{% set version = "0.10.11" %}
+{% set version = "0.10.12" %}
 
 package:
   name: {{ name }}
@@ -8,7 +8,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: f7aa3c7addce69538892c185055d59719ee1587f58ce0ae4fec8ddd072946d63
+  sha256: b011f7f9f38a3e59924cc9ff652e6d33105fa03fcaf3792f47d752626a0a4625
 
 build:
   skip: true  # [win and vc<14]
@@ -23,6 +23,7 @@ requirements:
   build:
     - libtool  # [unix]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - cmake
     - ninja
