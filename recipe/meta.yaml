@@ -62,7 +62,7 @@ test:
     - pkg-config --libs --cflags igraph  # [not win]
 
 about:
-  home: http://igraph.org/c/
+  home: https://igraph.org/c/
   license: GPL-2.0-or-later
   license_family: GPL
   license_file:
