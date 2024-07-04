@@ -3,7 +3,7 @@ About igraph-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/igraph-feedstock/blob/main/LICENSE.txt)
 
-Home: http://igraph.org/c/
+Home: https://igraph.org/c/
 
 Package license: GPL-2.0-or-later
 
