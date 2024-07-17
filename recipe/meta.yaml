@@ -12,7 +12,7 @@ source:
 
 build:
   skip: true  # [win and vc<14]
-  number: 0
+  number: 1
   script_env:
     - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
 
@@ -35,7 +35,7 @@ requirements:
     - libxml2
     - arpack   # [not win]
     - gmp  # [not win]
-    - mpir  # [win]
+    - gmp  # [win]
     - libblas
     - liblapack
   run:
@@ -43,7 +43,7 @@ requirements:
     - libxml2
     - arpack  # [not win]
     - gmp  # [not win]
-    - mpir  # [win]
+    - gmp  # [win]
     # We explicitly do not list libblas and liblapack here because they are
     # specified automatically correctly, and can be changed to other
     # implementations.
