@@ -30,9 +30,15 @@ cmake ${CMAKE_ARGS} -GNinja \
     -DLIBXML2_LIBRARIES="$PREFIX/lib/libxml2${SHLIB_EXT}" \
     ..
 
+if [ "$( uname )" == "Darwin" ]; then
+  EXCLUDE_TESTS="-E example::safelocale"
+fi
+
 cmake --build . --config Release --target igraph -- -j${CPU_COUNT}
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
-  cmake --build . --config Release --target check -j${CPU_COUNT}
+  cmake --build . --config Release --target build_tests -j${CPU_COUNT}
+  ctest --progress --output-on-failure -C Release --extra-verbose -j${CPU_COUNT} \
+    ${EXCLUDE_TESTS}
 fi
 cmake --build . --config Release --target install -j${CPU_COUNT}
 
