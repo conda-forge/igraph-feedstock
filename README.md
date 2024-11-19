@@ -9,6 +9,8 @@ Package license: GPL-2.0-or-later
 
 Summary: An open source and free collection of network analysis tool.
 
+Development: https://github.com/igraph/igraph
+
 igraph is a collection of network analysis tools with the emphasis on efficiency,
 portabiliy and ease of use. igraph is open source and free. igraph can be
 programmed in R, Python and C/C++."
