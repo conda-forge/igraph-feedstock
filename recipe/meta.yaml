@@ -9,6 +9,8 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: 03ba01db0544c4e32e51ab66f2356a034394533f61b4e14d769b9bbf5ad5e52c
+  patches:
+    - 0001-update-plfit-for-nan.patch
 
 build:
   skip: true  # [win and vc<14]
