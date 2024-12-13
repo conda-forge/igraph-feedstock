@@ -3,9 +3,6 @@
 mkdir build
 if errorlevel 1 exit 1
 
-REM see https://developercommunity.visualstudio.com/t/NAN-is-no-longer-compile-time-constant-i/10688907
-set "CPPFLAGS=%CPPFLAGS% -D_UCRT_NOISY_NAN"
-
 cd build
 
 cmake %CMAKE_ARGS% -GNinja ^
