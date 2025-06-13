@@ -1,5 +1,5 @@
 {% set name = "igraph" %}
-{% set version = "0.10.15" %}
+{% set version = "0.10.16" %}
 
 package:
   name: {{ name }}
@@ -8,12 +8,10 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/igraph/igraph/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 03ba01db0544c4e32e51ab66f2356a034394533f61b4e14d769b9bbf5ad5e52c
-  patches:
-    - 0001-update-plfit-for-nan.patch
+  sha256: 15a1540a8d270232c9aa99adeeffb7787bea96289d6bef6646ec9c91a9a93992
 
 build:
-  number: 1
+  number: 0
   script_env:
     - F2C_EXTERNAL_ARITH_HEADER={{ RECIPE_DIR }}/arith_arm64.h  # [arm64]
 

@@ -25,11 +25,11 @@ glpk:
 gmp:
 - '6'
 libblas:
-- 3.9 *netlib
+- 3.9.* *netlib
 liblapack:
-- 3.9 *netlib
+- 3.9.* *netlib
 libxml2:
-- '2'
+- '2.13'
 target_platform:
 - linux-aarch64
 zip_keys:
