@@ -7,7 +7,7 @@ arpack:
 c_compiler:
 - clang
 c_compiler_version:
-- '18'
+- '19'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -19,7 +19,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '18'
+- '19'
 glpk:
 - '5.0'
 gmp:
@@ -28,8 +28,8 @@ libblas:
 - 3.9.* *netlib
 liblapack:
 - 3.9.* *netlib
-libxml2:
-- '2.13'
+libxml2_devel:
+- '2.14'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 target_platform:
