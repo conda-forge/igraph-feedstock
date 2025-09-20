@@ -32,7 +32,7 @@ if errorlevel 1 exit 1
 cmake --build . --config Release --target build_tests -j%CPU_COUNT%
 if errorlevel 1 exit 1
 
-ctest --progress --output-on-failure --config Release --extra-verbose -j%CPU_COUNT%
+ctest --progress --output-on-failure -C Release --extra-verbose -j%CPU_COUNT%
 if errorlevel 1 exit 1
 cmake --build . --config Release --target install -j%CPU_COUNT%
 if errorlevel 1 exit 1
