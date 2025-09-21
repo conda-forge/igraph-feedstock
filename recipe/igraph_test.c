@@ -8,11 +8,11 @@ int main(void) {
 
   igraph_erdos_renyi_game_gnp(
     &graph, 100, 5.0 / 100,
-    IGRAPH_UNDIRECTED, IGRAPH_NO_LOOPS
+    IGRAPH_UNDIRECTED, IGRAPH_SIMPLE_SW, false
   );
 
   igraph_diameter(
-    &graph, &diameter,
+    &graph, /*weights = */ NULL, &diameter,
     /* from = */ NULL, /* to = */ NULL,
     /* vertex_path = */ NULL, /* edge_path = */ NULL,
     IGRAPH_UNDIRECTED, /* unconn= */ true
